@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript">
+	function testLogin(){
+		var no = $("#eno").val();
+		var name = $("#ename").val();
+		
+		$.ajax({
+			url:"login",
+			type:"post",
+			data:{
+				empno:no,
+				empname:name
+			},
+			success:function(msg){
+				if(msg=="ok"){
+					location.href = "main.html";
+				}
+				else{
+					alert("用户名或密码错误");
+					
+					testClear();
+				}
+			}
+		});
+		
+	}
+
+	function testClear(){
+		$("#eno").val("");
+		$("#ename").val("");
+	}
+</script>
+
+<style type="text/css">
+    div{
+        
+    }
+    body{
+      background-image: url(image/img2.jpg);
+      background-repeat:no-repeat;
+      repeat: no-repeat;
+    background-attachment:fixed;
+    background-size: cover;
+    -moz-background-size: cover;
+    -webkit-background-size: cover;
+    }
+    
+	#table_login{
+		border: 1px solid gray; 
+		width: 300px;
+		text-align: center;
+		border-radius:8px;
+		padding: 10px 0px 10px 0px;
+		margin-top: 300px;
+	}
+	button {
+		width: 80px;
+		height: 35px;
+		background-color: #F9951A;
+		border: 1px solid #F9951A;
+		color: white;
+		border-radius:8px;
+	}
+	input:FOCUS {
+		background-color: #4480BF;
+	}
+</style>
+</head>
+<body>
+   <div style="color: red">
+   <h3>欢迎来到员工管理系统</h3>
+   
+   </div>
+	<table id="table_login" align="center">
+		<tr>
+			<td>工号：</td>
+			<td>
+				<input type="text" id="eno">
+			</td>
+		</tr>
+		<tr>
+			<td>姓名：</td>
+			<td>
+				<input type="text" id="ename">
+			</td>
+		</tr>
+		
+		<tr>
+			<td colspan="2">
+				<button onclick="testLogin()">登录</button>
+				<button onclick="testClear()">取消</button>
+			</td>
+		</tr>
+	</table>
+</body>
+</html>

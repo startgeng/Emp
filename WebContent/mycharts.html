@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="js/echarts.min.js"></script>
+<script type="text/javascript">
+	function testShow(){
+		 // 基于准备好的dom，初始化echarts实例s
+        var myChart = echarts.init(document.getElementById('main'));
+
+        // 指定图表的配置项和数据
+        var option = {
+
+            title: {
+                text: '我的测试图表'
+            },
+            tooltip: {},
+            legend: {
+                data:['销量1']
+            },
+            xAxis: {
+                data: ["衬衫111","羊毛衫22","雪纺衫","裤子","高跟鞋","袜子"]
+            },
+            yAxis: {},
+            series: [{
+                name: '销量1',
+                type: 'bar',
+                data: [50, 20, 36, 10, 10, 20]
+            }]
+        };
+
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+	}
+	
+</script>
+
+</head>
+<body>
+	<button onclick="testShow()">显示</button>
+	<div id="main" style="width: 600px;height:400px;"></div>
+	
+	
+</body>
+</html>
